@@ -126,6 +126,7 @@
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* For Safari */
 }
 
 .flip-card-back {
@@ -134,6 +135,22 @@
 
 .flip-card.flipped {
   transform: rotateY(180deg);
+}
+
+/* Add touch instructions for mobile */
+@media (max-width: 768px) {
+  .flip-card-front::after {
+    content: "Tap to flip";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    opacity: 0.8;
+  }
 }
 
 /* Hamburger menu animation */
