@@ -1,0 +1,565 @@
+/* Base Styles & Variables */
+:root {
+    --primary-color: #4a6cf7;
+    --secondary-color: #6a7efc;
+    --text-color: #333;
+    --light-text: #777;
+    --lightest-text: #999;
+    --background-color: #f5f7fa;
+    --card-bg: #ffffff;
+    --border-color: #e1e5ee;
+    --success-color: #28a745;
+    --app-padding: 16px;
+    --border-radius: 16px;
+    --small-radius: 8px;
+    --app-width: 480px;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-color);
+    background-color: #f0f0f0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+/* App Container - Simulates a mobile device */
+.app-container {
+    width: 100%;
+    max-width: var(--app-width);
+    min-height: 100vh;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Status Bar - Simulates phone status bar */
+.status-bar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 6px var(--app-padding);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.status-bar .icons i {
+    margin-left: 6px;
+}
+
+/* Header Styles */
+.app-header {
+    padding: var(--app-padding);
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 0 0 var(--small-radius) var(--small-radius);
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid white;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info h1 {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.profile-info p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Navigation */
+.app-nav {
+    display: none; /* Hide the top nav on mobile */
+}
+
+.app-nav ul {
+    display: flex;
+    list-style: none;
+    background-color: var(--card-bg);
+    border-radius: var(--small-radius);
+    overflow: hidden;
+    margin: var(--app-padding);
+}
+
+.app-nav li {
+    flex: 1;
+    text-align: center;
+}
+
+.app-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    color: var(--light-text);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.app-nav a i {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.app-nav li.active a {
+    color: var(--primary-color);
+}
+
+/* Content Area */
+.app-content {
+    flex: 1;
+    padding: var(--app-padding);
+    overflow-y: auto;
+    background-color: var(--background-color);
+    position: relative;
+}
+
+/* Pages/Sections */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.page > h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Cards */
+.section-card {
+    background-color: var(--card-bg);
+    border-radius: var(--small-radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.section-card h2 {
+    padding: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content p {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--light-text);
+}
+
+/* Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.app-button {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.secondary {
+    background-color: #f0f2f5;
+    color: var(--text-color);
+}
+
+/* Timeline */
+.timeline-item {
+    display: flex;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.timeline-date {
+    flex: 0 0 120px;
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.timeline-content h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.timeline-content p {
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: var(--light-text);
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: var(--small-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.project-image {
+    height: 180px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-info {
+    padding: 15px;
+}
+
+.project-info h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.project-info p {
+    color: var(--light-text);
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.project-tags span {
+    background-color: #eef1f8;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.view-project {
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Skills Section */
+.skills-header {
+    padding: 60px 20px 30px;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: var(--small-radius) var(--small-radius) 0 0;
+    margin-bottom: 20px;
+}
+
+.skills-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: var(--small-radius) var(--small-radius) 0 0;
+}
+
+.skills-header h2, .skills-header p {
+    position: relative;
+    z-index: 1;
+}
+
+.skills-header p {
+    margin-top: 5px;
+    opacity: 0.9;
+}
+
+.skills-container {
+    background-color: var(--card-bg);
+    border-radius: var(--small-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    padding: 5px 0;
+}
+
+.skill-category {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.skill-category:last-child {
+    border-bottom: none;
+}
+
+.skill-category h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.skill-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skill-item {
+    padding-bottom: 8px;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.skill-bar {
+    height: 6px;
+    background-color: #eef1f8;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.skill-level {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+/* Contact Form */
+.contact-container {
+    background-color: var(--card-bg);
+    border-radius: var(--small-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.contact-form {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--small-radius);
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text-color);
+    background-color: #f9fafc;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.submit-btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.contact-info {
+    padding: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.contact-item i {
+    width: 30px;
+    height: 30px;
+    background-color: #eef1f8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    margin-right: 12px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.social-link {
+    width: 36px;
+    height: 36px;
+    background-color: #eef1f8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Bottom Navigation - Mobile App Style */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--card-bg);
+    padding: 12px 0 8px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    bottom: 0;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--light-text);
+    text-decoration: none;
+    font-size: 10px;
+}
+
+.nav-item i {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.nav-item.active {
+    color: var(--primary-color);
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .app-nav {
+        display: block;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .contact-container {
+        display: flex;
+    }
+    
+    .contact-form,
+    .contact-info {
+        flex: 1;
+    }
+    
+    .contact-form {
+        border-bottom: none;
+        border-right: 1px solid var(--border-color);
+    }
+    
+    /* Still keep bottom nav to maintain mobile app appearance */
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page {
+    animation: fadeIn 0.3s ease-out;
+}
