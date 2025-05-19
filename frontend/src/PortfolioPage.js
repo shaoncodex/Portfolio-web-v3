@@ -143,7 +143,7 @@ const PortfolioPage = () => {
   // Filter projects based on selected category
   const filteredProjects = filter === "all" 
     ? allProjects 
-    : allProjects.filter(project => project.category.toLowerCase() === filter);
+    : allProjects.filter(project => project.category.toLowerCase() === filter.toLowerCase());
 
   // Get the projects to display based on the current limit
   const displayedProjects = filteredProjects.slice(0, visibleProjects);
@@ -153,17 +153,19 @@ const PortfolioPage = () => {
     if (inView && visibleProjects < filteredProjects.length && !isLoading) {
       loadMoreProjects();
     }
-  }, [inView, filteredProjects.length, visibleProjects]);
+  }, [inView, filteredProjects.length, visibleProjects, isLoading]);
 
   // Function to load more projects
   const loadMoreProjects = () => {
-    setIsLoading(true);
-    
-    // Simulate a delay to show the loading effect
-    setTimeout(() => {
-      setVisibleProjects(prev => Math.min(prev + 3, filteredProjects.length));
-      setIsLoading(false);
-    }, 1000);
+    if (visibleProjects < filteredProjects.length) {
+      setIsLoading(true);
+      
+      // Simulate a delay to show the loading effect
+      setTimeout(() => {
+        setVisibleProjects(prev => Math.min(prev + 3, filteredProjects.length));
+        setIsLoading(false);
+      }, 1000);
+    }
   };
 
   // Reset visible projects when filter changes
@@ -272,8 +274,25 @@ const PortfolioPage = () => {
           </AnimatePresence>
         </div>
 
+        {/* Empty state */}
+        {displayedProjects.length === 0 && (
+          <div className="py-16 text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="inline-block text-4xl mb-4"
+            >
+              😕
+            </motion.div>
+            <h3 className="text-xl font-bold mb-2">No projects found</h3>
+            <p className="text-gray-400">
+              No projects match the selected filter. Try a different category.
+            </p>
+          </div>
+        )}
+
         {/* Load more button or loader */}
-        {displayedProjects.length < filteredProjects.length && (
+        {displayedProjects.length > 0 && displayedProjects.length < filteredProjects.length && (
           <div 
             ref={ref}
             className="mt-8 flex justify-center"
@@ -295,26 +314,11 @@ const PortfolioPage = () => {
             )}
           </div>
         )}
-
-        {/* Empty state */}
-        {displayedProjects.length === 0 && (
-          <div className="py-16 text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="inline-block text-4xl mb-4"
-            >
-              😕
-            </motion.div>
-            <h3 className="text-xl font-bold mb-2">No projects found</h3>
-            <p className="text-gray-400">
-              No projects match the selected filter. Try a different category.
-            </p>
-          </div>
-        )}
       </div>
     </div>
   );
 };
+
+export default PortfolioPage;
 
 export default PortfolioPage;
