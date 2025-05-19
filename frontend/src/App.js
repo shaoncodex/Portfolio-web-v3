@@ -910,8 +910,8 @@ const Home = () => {
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
-            className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center justify-center shadow-lg z-50 hover:shadow-purple-500/25"
-            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center justify-center shadow-lg z-50 hover:shadow-purple-500/25 cursor-pointer"
+            onClick={() => scrollToTop()}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
