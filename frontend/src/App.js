@@ -14,6 +14,23 @@ const PortfolioCard = ({ project, index }) => {
     threshold: 0.1,
   });
 
+  const toggleFlip = () => {
+    setIsFlipped(prev => !prev);
+  };
+
+  // Handle hover on desktop only
+  const handleMouseEnter = () => {
+    if (window.innerWidth > 768) {
+      setIsFlipped(true);
+    }
+  };
+  
+  const handleMouseLeave = () => {
+    if (window.innerWidth > 768) {
+      setIsFlipped(false);
+    }
+  };
+
   return (
     <motion.div
       ref={ref}
@@ -22,9 +39,9 @@ const PortfolioCard = ({ project, index }) => {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.2, duration: 0.5 }}
       whileHover={{ scale: 1.05 }}
-      onMouseEnter={() => setIsFlipped(true)}
-      onMouseLeave={() => setIsFlipped(false)}
-      onClick={() => setIsFlipped(!isFlipped)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={toggleFlip}
     >
       <div className={`flip-card ${isFlipped ? "flipped" : ""}`}>
         <div className="flip-card-front rounded-xl overflow-hidden shadow-2xl">
