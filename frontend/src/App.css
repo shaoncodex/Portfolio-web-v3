@@ -1,38 +1,207 @@
+/* Global styles */
 .App {
-    text-align: center;
+  text-align: center;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Animated background gradient */
+.animated-bg {
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Floating particles */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
 }
 
-.App-link {
-    color: #61dafb;
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+@keyframes float-up {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Generate different particles */
+.particle-1 { left: 10%; animation: float-up 30s infinite linear; width: 4px; height: 4px; }
+.particle-2 { left: 20%; animation: float-up 34s infinite linear; width: 6px; height: 6px; animation-delay: 2s; }
+.particle-3 { left: 30%; animation: float-up 28s infinite linear; width: 8px; height: 8px; animation-delay: 5s; }
+.particle-4 { left: 40%; animation: float-up 35s infinite linear; width: 5px; height: 5px; animation-delay: 7s; }
+.particle-5 { left: 50%; animation: float-up 32s infinite linear; width: 7px; height: 7px; animation-delay: 9s; }
+.particle-6 { left: 60%; animation: float-up 38s infinite linear; width: 4px; height: 4px; animation-delay: 11s; }
+.particle-7 { left: 70%; animation: float-up 26s infinite linear; width: 9px; height: 9px; animation-delay: 13s; }
+.particle-8 { left: 80%; animation: float-up 33s infinite linear; width: 6px; height: 6px; animation-delay: 15s; }
+.particle-9 { left: 90%; animation: float-up 30s infinite linear; width: 5px; height: 5px; animation-delay: 17s; }
+.particle-10 { left: 15%; animation: float-up 36s infinite linear; width: 7px; height: 7px; animation-delay: 19s; }
+.particle-11 { left: 25%; animation: float-up 29s infinite linear; width: 4px; height: 4px; animation-delay: 21s; }
+.particle-12 { left: 35%; animation: float-up 31s infinite linear; width: 8px; height: 8px; animation-delay: 23s; }
+.particle-13 { left: 45%; animation: float-up 27s infinite linear; width: 5px; height: 5px; animation-delay: 25s; }
+.particle-14 { left: 55%; animation: float-up 33s infinite linear; width: 6px; height: 6px; animation-delay: 27s; }
+.particle-15 { left: 65%; animation: float-up 35s infinite linear; width: 7px; height: 7px; animation-delay: 29s; }
+.particle-16 { left: 75%; animation: float-up 30s infinite linear; width: 4px; height: 4px; animation-delay: 31s; }
+.particle-17 { left: 85%; animation: float-up 28s infinite linear; width: 9px; height: 9px; animation-delay: 33s; }
+.particle-18 { left: 95%; animation: float-up 34s infinite linear; width: 5px; height: 5px; animation-delay: 35s; }
+.particle-19 { left: 5%; animation: float-up 32s infinite linear; width: 6px; height: 6px; animation-delay: 37s; }
+.particle-20 { left: 15%; animation: float-up 29s infinite linear; width: 7px; height: 7px; animation-delay: 39s; }
+
+/* Profile image animation */
+.profile-image {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(167, 139, 250, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(167, 139, 250, 0);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* 3D Flip card animation */
+.perspective {
+  perspective: 1000px;
+}
+
+.flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Hamburger menu animation */
+.hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: white;
+  border-radius: 9px;
+  left: 0;
+  transition: 0.25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  top: 9px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 18px;
+}
+
+.hamburger.open span:nth-child(1) {
+  top: 9px;
+  transform: rotate(135deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  top: 9px;
+  transform: rotate(-135deg);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #6366f1, #a855f7);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #4f46e5, #9333ea);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .flip-card {
+    height: 100%;
+  }
 }
